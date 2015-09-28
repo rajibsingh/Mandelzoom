@@ -1,17 +1,44 @@
 package com.sepoysoftware.mandelzoom;
 
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
-public class Mandelzoom implements MouseListener, MouseMotionListener, MouseWheelListener {
-    Component backpointer;
-    BaseRenderer renderer;
 
+public class Mandelzoom extends Application {
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("Hello World!");
+        Button btn = new Button();
+        btn.setText("Say 'Hello World'");
+        btn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Hello World!");
+            }
+        });
+        Image backgroundImg = new Image("test_img.jpg");
+        ImageView iv = new ImageView(backgroundImg);
+
+        StackPane root = new StackPane();
+        root.getChildren().add(btn);
+        root.getChildren().add(iv);
+        primaryStage.setScene(new Scene(root, 1024, 768));
+        primaryStage.show();
+    }
+
+    /**
     public Mandelzoom(int paletteWidth, int paletteHeight, Component backpointer) {
         this.renderer = new BufferedImageRenderer(paletteWidth, paletteHeight);
         this.backpointer = backpointer;
@@ -88,4 +115,5 @@ public class Mandelzoom implements MouseListener, MouseMotionListener, MouseWhee
         }
         backpointer.repaint();
     }
+     **/
 }
