@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.PixelFormat;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
+import javafx.scene.paint.Color;
 
 /**
  * Created by raj on 9/28/15.
@@ -22,7 +23,7 @@ public class Renderer {
         PixelWriter writer = image.getPixelWriter();
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-               writer.setArgb(x, y, 0000);
+               writer.setColor(x, y, Color.CORNFLOWERBLUE);
             }
         }
         return image;
