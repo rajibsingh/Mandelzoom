@@ -5,7 +5,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -20,19 +19,18 @@ public class Mandelzoom extends Application {
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Hello World!");
-        Button btn = new Button();
-        btn.setText("Say 'Hello World'");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("Hello World!");
-            }
-        });
-        Image backgroundImg = new Image("test_img.jpg");
-        ImageView iv = new ImageView(backgroundImg);
+        //Button btn = new Button();
+        //btn.setText("Say 'Hello World'");
+        //btn.setOnAction(new EventHandler<ActionEvent>() {
+        //    public void handle(ActionEvent event) {
+        //        System.out.println("Hello World!");
+        //    }
+        //});
+        Renderer renderer = new Renderer(1024, 1024);
+        ImageView iv = new ImageView(renderer.getImage());
 
         StackPane root = new StackPane();
-        root.getChildren().add(btn);
+        //root.getChildren().add(btn);
         root.getChildren().add(iv);
         primaryStage.setScene(new Scene(root, 1024, 1024));
         primaryStage.show();
