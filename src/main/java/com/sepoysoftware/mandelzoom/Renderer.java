@@ -23,7 +23,7 @@ public class Renderer {
         PixelWriter writer = image.getPixelWriter();
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-               writer.setColor(x, y, Color.CORNFLOWERBLUE);
+               writer.setColor(x, y, Color.BLACK);
             }
         }
         return image;
