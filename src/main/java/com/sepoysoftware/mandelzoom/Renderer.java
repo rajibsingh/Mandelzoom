@@ -21,9 +21,15 @@ public class Renderer {
     Image getImage() {
         WritableImage image = new WritableImage(width, height);
         PixelWriter writer = image.getPixelWriter();
+        Color color = Color.WHITE;
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-               writer.setColor(x, y, Color.BLACK);
+                if (color == Color.WHITE) {
+                    color = Color.BLACK;
+                } else if (color == Color.BLACK) {
+                    color = Color.WHITE;
+                }
+                writer.setColor(x, y, color);
             }
         }
         return image;
