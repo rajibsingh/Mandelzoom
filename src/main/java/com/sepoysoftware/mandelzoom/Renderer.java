@@ -10,12 +10,20 @@ import javafx.scene.paint.Color;
  * Created by raj on 9/28/15.
  */
 public class Renderer {
-    public int width;
-    public int height;
+    int width;
+    int height;
+    double xMin = -2.0;
+    double xMax = 0.5;
+    double yMin = -1.25;
+    double yMax =  1.25;
+    double boxWidth= Math.abs(xMax - xMin / width);
+    double boxHeight = Math.abs(yMax - yMin / height);
+    double[][] array;
 
     public Renderer(int width, int height) {
         this.width = width;
         this.height = height;
+        array = new double[height][width];
     }
 
     Image getImage() {
@@ -27,5 +35,14 @@ public class Renderer {
             }
         }
         return image;
+    }
+
+    void calculate() {
+        for (double y = yMax; y > yMin; y -= boxHeight ) {
+            for (double x = xMin; x < xMax; x += boxWidth) {
+                //TODO - actual Mandelbrot calculation
+
+            }
+        }
     }
 }
