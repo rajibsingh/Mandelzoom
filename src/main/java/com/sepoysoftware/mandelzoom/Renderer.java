@@ -16,6 +16,8 @@ public class Renderer {
     double xMax = 0.5;
     double yMin = -1.25;
     double yMax =  1.25;
+    int repMax = 1000;
+    int sizeMax = 2;
     double boxWidth= Math.abs(xMax - xMin / width);
     double boxHeight = Math.abs(yMax - yMin / height);
     double[][] array;
@@ -32,6 +34,14 @@ public class Renderer {
         Color color = Color.WHITE;
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
+                double r = xMin + boxWidth * x;
+                double i = yMin + boxHeight * y;
+                int size = 0;
+                int count = 0;
+                ComplexNumber cn = new ComplexNumber(r, i);
+                while (size < sizeMax && count < countMax) {
+                    cn = cn.square();
+                }
                 if (color == Color.WHITE) {
                     color = Color.BLACK;
                 } else if (color == Color.BLACK) {

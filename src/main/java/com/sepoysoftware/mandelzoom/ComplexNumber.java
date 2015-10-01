@@ -27,7 +27,7 @@ public class ComplexNumber {
         return size;
     }
 
-    public void square()
+    public ComplexNumber square()
     {
         // need to use a placeholder to hold the real because I use
         // the real at the time to calculate the imaginary
@@ -36,11 +36,9 @@ public class ComplexNumber {
         real = tmpReal;
     }
 
-    public ComplexNumber copy()
-    {
+    public ComplexNumber copy() {
         return new ComplexNumber(this.getReal(), this.getImaginary());
     }
-
 
     public double getImaginary() {
         return imaginary;
@@ -58,16 +56,15 @@ public class ComplexNumber {
         this.real = real;
     }
 
-    public boolean equals(Object obj)
-    {
+    public boolean equals(Object obj) {
+        if (!(obj instanceof ComplexNumber)) {
+            return false;
+        }
         ComplexNumber cmp = (ComplexNumber) obj;
-        return (cmp instanceof ComplexNumber
-                && this.real == cmp.getReal()
-                && this.imaginary == cmp.getImaginary());
+        return (this.real == cmp.getReal() && this.imaginary == cmp.getImaginary());
     }
 
-    public String toString()
-    {
+    public String toString() {
         return new String(this.getReal() + " " + this.getImaginary() + "i");
     }
 }
